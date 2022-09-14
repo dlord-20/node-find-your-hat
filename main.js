@@ -38,10 +38,11 @@ const generateField = (width, height) => {
                 newRow.push(getRandomCharacter());
             }
         }
-        fieldArray.push(newRow);
+        const row = newRow.join('');
+        fieldArray.push(row);
     }
 
-    return fieldArray;
+    return fieldArray.join('\n');
 }
 
 console.log(generateField(5,5));
