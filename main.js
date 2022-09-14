@@ -10,6 +10,12 @@ class Field {
   
 }
 
+const getRandomEndPosition = (num) => {
+    const position = Math.floor(Math.random() * num);
+    return position;
+}
+
+
 const getRandomCharacter = () => {
     const randNum = Math.floor(Math.random()* 5);
     const options = ['░', '░', '░', 'O', 'O'];
@@ -19,12 +25,14 @@ const getRandomCharacter = () => {
 
 const generateField = (width, height) => {
     const fieldArray = [];
+    const endColPosition = getRandomEndPosition(width);
+    const endRowPosition = getRandomEndPosition(height);
     for(let i = 0; i < height; i++) {
         const newRow = [];
         for(let j = 0; j < width; j++) {
             if(i === 0 && j === 0) {
                 newRow.push('*');
-            } else if(i === (height - 2) && j == (width - 2) ) {
+            } else if(i === endRowPosition && j === endColPosition ) {
                 newRow.push('^');
             } else {
                 newRow.push(getRandomCharacter());
