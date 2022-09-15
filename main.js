@@ -67,7 +67,24 @@ const changePosition = (direction) => {
     }
 }
 
-const checkPosition = () => {
+const getCharAtPosition = (testField) => {
+    let width = currentPosition[0];
+    let height = currentPosition[1];
+    if(width === 0 && height === 0) {
+        
+    } else if(width === 0) {
+        width = 1;
+    } else if(height === 0) {
+        height = 1;
+    }
+    const stringNum = (width * height) - 1;
+    console.log('width: ' + width);
+    console.log('height: ' + height);
+    console.log('stringindex: ' + stringNum);
+}
+
+const checkPosition = (testField) => {
+    
 
 }
 
@@ -81,10 +98,13 @@ currentField = replaceCharacter(currentField, 12, pathCharacter);
 console.log(currentField);
 console.log(fieldSize);
 // changePosition('right');
-console.log(currentPosition);
+console.log('currentPosition: ' + currentPosition);
 changePosition('down');
-console.log(currentPosition);
-changePosition('left');
-console.log(currentPosition);
-changePosition('left');
-console.log(currentPosition);
+getCharAtPosition();
+console.log('currentPosition: ' + currentPosition);
+changePosition('right');
+getCharAtPosition();
+console.log('currentPosition: ' + currentPosition);
+changePosition('right');
+getCharAtPosition();
+console.log('currentPosition: ' + currentPosition);
