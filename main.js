@@ -73,11 +73,22 @@ const getCharAtPosition = (testField) => {
 
     
     const stringNum = (fieldSize[0] * height) + width + 2;
-    console.log('width: ' + width);
-    console.log('height: ' + height);
-    console.log('stringindex: ' + stringNum);
+    // console.log('width: ' + width);
+    // console.log('height: ' + height);
+    // console.log('stringindex: ' + stringNum);
     //Height times width + width - 1
-    return replaceCharacter(testField, stringNum, pathCharacter);
+    const charAtPostion = testField[stringNum];
+    if(charAtPostion === fieldCharacter) {
+        return replaceCharacter(testField, stringNum, pathCharacter);
+    } else if(charAtPostion === hole) {
+        return 'You fell in a hole. You lose!';
+    } else if(charAtPostion === hat) {
+        return 'Victory!!!';
+    } else if(charAtPostion === pathCharacter) {
+        return 'Cannot return to old path, you lose!';
+    } else {
+        return 'Out of bounds, you lose!';
+    }
 }
 
 const checkPosition = (testField) => {
