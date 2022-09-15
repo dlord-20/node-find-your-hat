@@ -1,9 +1,10 @@
-const prompt = require('prompt-sync')({sigint: true});
+// const prompt = require('prompt-sync')({sigint: true});
 
 const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
+const currentPosition = [0, 0];
 
 class Field {
 
@@ -18,7 +19,7 @@ const getRandomEndPosition = (num) => {
 
 const getRandomCharacter = () => {
     const randNum = Math.floor(Math.random()* 5);
-    const options = ['░', '░', '░', 'O', 'O'];
+    const options = [fieldCharacter, fieldCharacter, fieldCharacter, hole, hole];
     const character = options[randNum];
     return character;
 }
@@ -31,9 +32,9 @@ const generateField = (width, height) => {
         const newRow = [];
         for(let j = 0; j < width; j++) {
             if(i === 0 && j === 0) {
-                newRow.push('*');
+                newRow.push(pathCharacter);
             } else if(i === endRowPosition && j === endColPosition ) {
-                newRow.push('^');
+                newRow.push(hat);
             } else {
                 newRow.push(getRandomCharacter());
             }
@@ -45,4 +46,11 @@ const generateField = (width, height) => {
     return fieldArray.join('\n');
 }
 
-console.log(generateField(5,5));
+const replaceCharacter = (string, index, replacement) => {
+    return string.substring(0, index) + replacement + string.substring(index + replacement.length);
+}
+
+let currentField = generateField(5,5);
+currentField = replaceCharacter(currentField, 1, pathCharacter);
+
+console.log(currentField);
