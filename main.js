@@ -72,10 +72,10 @@ const getCharAtPosition = (testField) => {
     let height = currentPosition[1];
 
     
-    const stringNum = (fieldSize[0] * height) + width + 2;
-    // console.log('width: ' + width);
-    // console.log('height: ' + height);
-    // console.log('stringindex: ' + stringNum);
+    const stringNum = (fieldSize[0] * height) + width + (height * 1);
+    console.log('width: ' + width);
+    console.log('height: ' + height);
+    console.log('stringindex: ' + stringNum);
     //Height times width + width - 1
     const charAtPostion = testField[stringNum];
     if(charAtPostion === fieldCharacter) {
@@ -103,15 +103,31 @@ const replaceCharacter = (string, index, replacement) => {
 let currentField = generateField(5,5);
 // currentField = replaceCharacter(currentField, 12, pathCharacter);
 
+console.log('og');
 console.log(currentField);
 console.log(fieldSize);
 // changePosition('right');
 console.log('currentPosition: ' + currentPosition);
+console.log('1');
 changePosition('down');
+console.log('currentPosition: ' + currentPosition);
+currentField = getCharAtPosition(currentField);
+console.log(currentField);
+console.log('2');
 changePosition('down');
+console.log('currentPosition: ' + currentPosition);
+currentField = getCharAtPosition(currentField);
+console.log(currentField);
+console.log('3');
 changePosition('right');
+console.log('currentPosition: ' + currentPosition);
+currentField = getCharAtPosition(currentField);
+console.log(currentField);
+console.log('4');
 changePosition('right');
-console.log(getCharAtPosition(currentField));
+console.log('currentPosition: ' + currentPosition);
+currentField = getCharAtPosition(currentField);
+console.log(currentField);
 // console.log('currentPosition: ' + currentPosition);
 // changePosition('right');
 // getCharAtPosition();
