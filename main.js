@@ -5,6 +5,7 @@ const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
 const currentPosition = [0, 0];
+let fieldSize = [0, 0];
 
 class Field {
 
@@ -26,6 +27,7 @@ const getRandomCharacter = () => {
 
 const generateField = (width, height) => {
     const fieldArray = [];
+    fieldSize = [width, height];
     const endColPosition = getRandomEndPosition(width);
     const endRowPosition = getRandomEndPosition(height);
     for(let i = 0; i < height; i++) {
@@ -46,11 +48,24 @@ const generateField = (width, height) => {
     return fieldArray.join('\n');
 }
 
+const changePosition = (direction) => {
+    switch(direction) {
+        case 'up': 
+            currentPosition[1];
+        
+    }
+}
+
+const checkPosition = () => {
+
+}
+
 const replaceCharacter = (string, index, replacement) => {
     return string.substring(0, index) + replacement + string.substring(index + replacement.length);
 }
 
 let currentField = generateField(5,5);
-currentField = replaceCharacter(currentField, 1, pathCharacter);
+currentField = replaceCharacter(currentField, 12, pathCharacter);
 
 console.log(currentField);
+console.log(fieldSize);
