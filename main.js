@@ -4,7 +4,7 @@ const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*';
-const currentPosition = [0, 0];
+let currentPosition = [0, 0];
 let fieldSize = [0, 0];
 
 class Field {
@@ -49,10 +49,21 @@ const generateField = (width, height) => {
 }
 
 const changePosition = (direction) => {
+    let width = currentPosition[0];
+    let height = currentPosition[1];
     switch(direction) {
         case 'up': 
-            currentPosition[1];
-        
+            currentPosition = [width, height - 1];
+            break;
+        case 'down':
+            currentPosition = [width, height + 1];
+            break;
+        case 'left':
+            currentPosition = [width - 1, height];
+            break;
+        case 'right':
+            currentPosition = [width + 1, height];
+            break;
     }
 }
 
@@ -69,3 +80,11 @@ currentField = replaceCharacter(currentField, 12, pathCharacter);
 
 console.log(currentField);
 console.log(fieldSize);
+// changePosition('right');
+console.log(currentPosition);
+changePosition('down');
+console.log(currentPosition);
+changePosition('left');
+console.log(currentPosition);
+changePosition('left');
+console.log(currentPosition);
