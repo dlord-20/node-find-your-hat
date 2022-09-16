@@ -67,6 +67,7 @@ const changePosition = (direction) => {
     }
 }
 
+//Get character and position in the field sent in and will return a string with either a new field or with the info stating that the game was over
 const getCharAtPosition = (testField) => {
     let width = currentPosition[0];
     let height = currentPosition[1];
