@@ -48,6 +48,8 @@ const generateField = (width, height) => {
     return fieldArray.join('\n');
 }
 
+//Change the current position of the player -> Happens before we 
+//check what happens when the player tries to move into the space
 const changePosition = (direction) => {
     let width = currentPosition[0];
     let height = currentPosition[1];
@@ -67,11 +69,11 @@ const changePosition = (direction) => {
     }
 }
 
-//Get character and position in the field sent in and will return a string with either a new field or with the info stating that the game was over
+//Get character and position in the field sent in and will return a string with 
+// either a new field or with the info stating that the game was over
 const getCharAtPosition = (testField) => {
     let width = currentPosition[0];
     let height = currentPosition[1];
-
     
     const stringNum = (fieldSize[0] * height) + width + (height * 1);
     console.log('width: ' + width);
