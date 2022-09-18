@@ -71,31 +71,51 @@ const changePosition = (direction) => {
 
 //Get character and position in the field sent in and will return a string with 
 // either a new field or with the info stating that the game was over
-const getCharAtPosition = (testField) => {
+const checkPlayerMove = (testField) => {
     let width = currentPosition[0];
     let height = currentPosition[1];
     
     const stringNum = (fieldSize[0] * height) + width + (height * 1);
-    console.log('width: ' + width);
-    console.log('height: ' + height);
-    console.log('stringindex: ' + stringNum);
+    // console.log('width: ' + width);
+    // console.log('height: ' + height);
+    // console.log('stringindex: ' + stringNum);
     //Height times width + width - 1
     const charAtPostion = testField[stringNum];
     if(charAtPostion === fieldCharacter) {
+        console.log(replaceCharacter(testField, stringNum, pathCharacter));
         return replaceCharacter(testField, stringNum, pathCharacter);
     } else if(charAtPostion === hole) {
-        return 'You fell in a hole. You lose!';
+        console.log('You fell in a hole. You lose!');
+        return false;
     } else if(charAtPostion === hat) {
-        return 'Victory!!!';
+        console.log('Victory!!!');
+        return false;
     } else if(charAtPostion === pathCharacter) {
-        return 'Cannot return to old path, you lose!';
+        console.log('Cannot return to old path, you lose!');
+        return false;
     } else {
-        return 'Out of bounds, you lose!';
+        console.log('Out of bounds, you lose!');
+        return false;
     }
 }
 
-const checkPosition = (testField) => {
-    
+const playGame = () => {
+    let status = true;
+    console.log('Let\'s play a fun game!');
+    do {
+        console.log('How wide do you want your playing field?');
+
+        console.log('How tall do you want you playing field?');
+        let field = generateField(10,10);
+        do {
+            console.log('Which direction do you wish to go? (\'up\', \'down\', \'left\', \'right\')');
+            const move = 'down';
+            changePosition(move);
+            field = checkPlayerMove(field);
+        } while(field !== false);
+        status = false;
+    } while(status !== false);
+
 
 }
 
@@ -103,38 +123,43 @@ const replaceCharacter = (string, index, replacement) => {
     return string.substring(0, index) + replacement + string.substring(index + replacement.length);
 }
 
-let currentField = generateField(5,5);
+// let currentField = generateField(5,5);
 // currentField = replaceCharacter(currentField, 12, pathCharacter);
 
-console.log('og');
-console.log(currentField);
-console.log(fieldSize);
+// console.log('og');
+// console.log(currentField);
+// console.log(fieldSize);
+
+playGame();
+
+
+
 // changePosition('right');
-console.log('currentPosition: ' + currentPosition);
-console.log('1');
-changePosition('down');
-console.log('currentPosition: ' + currentPosition);
-currentField = getCharAtPosition(currentField);
-console.log(currentField);
-console.log('2');
-changePosition('down');
-console.log('currentPosition: ' + currentPosition);
-currentField = getCharAtPosition(currentField);
-console.log(currentField);
-console.log('3');
-changePosition('right');
-console.log('currentPosition: ' + currentPosition);
-currentField = getCharAtPosition(currentField);
-console.log(currentField);
-console.log('4');
-changePosition('right');
-console.log('currentPosition: ' + currentPosition);
-currentField = getCharAtPosition(currentField);
-console.log(currentField);
+// console.log('currentPosition: ' + currentPosition);
+// console.log('1');
+// changePosition('down');
+// console.log('currentPosition: ' + currentPosition);
+// currentField = checkPlayerMove(currentField);
+// console.log(currentField);
+// console.log('2');
+// changePosition('down');
+// console.log('currentPosition: ' + currentPosition);
+// currentField = checkPlayerMove(currentField);
+// console.log(currentField);
+// console.log('3');
+// changePosition('right');
+// console.log('currentPosition: ' + currentPosition);
+// currentField = checkPlayerMove(currentField);
+// console.log(currentField);
+// console.log('4');
+// changePosition('right');
+// console.log('currentPosition: ' + currentPosition);
+// currentField = checkPlayerMove(currentField);
+// console.log(currentField);
 // console.log('currentPosition: ' + currentPosition);
 // changePosition('right');
-// getCharAtPosition();
+// checkPlayerMove();
 // console.log('currentPosition: ' + currentPosition);
 // changePosition('right');
-// getCharAtPosition();
+// checkPlayerMove();
 // console.log('currentPosition: ' + currentPosition);
