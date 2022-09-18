@@ -1,4 +1,4 @@
-// const prompt = require('prompt-sync')({sigint: true});
+const prompt = require('prompt-sync')({sigint: true});
 
 const hat = '^';
 const hole = 'O';
@@ -66,6 +66,8 @@ const changePosition = (direction) => {
         case 'right':
             currentPosition = [width + 1, height];
             break;
+        default:
+            break;
     }
 }
 
@@ -82,7 +84,7 @@ const checkPlayerMove = (testField) => {
     //Height times width + width - 1
     const charAtPostion = testField[stringNum];
     if(charAtPostion === fieldCharacter) {
-        console.log(replaceCharacter(testField, stringNum, pathCharacter));
+        // console.log(replaceCharacter(testField, stringNum, pathCharacter));
         return replaceCharacter(testField, stringNum, pathCharacter);
     } else if(charAtPostion === hole) {
         console.log('You fell in a hole. You lose!');
@@ -99,21 +101,29 @@ const checkPlayerMove = (testField) => {
     }
 }
 
+// const name = prompt('What is your name?');
+// console.log(`Hey there ${name}`);
+
+//Gets user input to play the game and will continue to run until they exit
 const playGame = () => {
     let status = true;
     console.log('Let\'s play a fun game!');
     do {
-        console.log('How wide do you want your playing field?');
-
-        console.log('How tall do you want you playing field?');
-        let field = generateField(10,10);
+        console.log('How wide do you want your playing field?')
+        const width = prompt();
+        console.log('How tall do you want you playing field?')
+        const height = prompt();
+        let field = generateField(width,height);
         do {
+            console.log(field);
             console.log('Which direction do you wish to go? (\'up\', \'down\', \'left\', \'right\')');
-            const move = 'down';
-            changePosition(move);
+            const direction = prompt();
+            changePosition(direction);
             field = checkPlayerMove(field);
         } while(field !== false);
-        status = false;
+        const keepPlaying = prompt('Do you want to play again? (\'yes\', \'no\')\n');
+        status =  keepPlaying === 'yes' ? true : false;
+        currentPosition = [0, 0];
     } while(status !== false);
 
 
