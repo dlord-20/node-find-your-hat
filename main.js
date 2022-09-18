@@ -121,7 +121,8 @@ const playGame = () => {
             changePosition(direction);
             field = checkPlayerMove(field);
         } while(field !== false);
-        const keepPlaying = prompt('Do you want to play again? (\'yes\', \'no\')\n');
+        console.log('Do you want to play again? (\'yes\', \'no\')');
+        const keepPlaying = prompt();
         status =  keepPlaying === 'yes' ? true : false;
         currentPosition = [0, 0];
     } while(status !== false);
