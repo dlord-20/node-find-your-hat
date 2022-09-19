@@ -12,12 +12,13 @@ class Field {
   
 }
 
+//Generates randomly where the position the hat should be
 const getRandomEndPosition = (num) => {
     const position = Math.floor(Math.random() * num);
     return position;
 }
 
-
+//Returns a random character (either hole or fieldcharacter)
 const getRandomCharacter = () => {
     const randNum = Math.floor(Math.random()* 5);
     const options = [fieldCharacter, fieldCharacter, fieldCharacter, hole, hole];
@@ -25,6 +26,7 @@ const getRandomCharacter = () => {
     return character;
 }
 
+//Creates a random field according to the sizes the user inputs
 const generateField = (width, height) => {
     const fieldArray = [];
     fieldSize = [width, height];
