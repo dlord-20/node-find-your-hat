@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')({sigint: true});
 
+//Global variables
 const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
