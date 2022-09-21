@@ -8,6 +8,7 @@ const pathCharacter = '*';
 let currentPosition = [0, 0];
 let fieldSize = [0, 0];
 
+//Probably should have used this but oh well
 class Field {
 
   
