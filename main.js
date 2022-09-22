@@ -145,6 +145,7 @@ const replaceCharacter = (string, index, replacement) => {
 // console.log(currentField);
 // console.log(fieldSize);
 
+//Not the best way to do this but it works for the purpose of the game
 playGame();
 
 
