@@ -147,7 +147,6 @@ const replaceCharacter = (string, index, replacement) => {
 
 //Not the best way to do this but it works for the purpose of the game
 //Unless we make multiple games and the player and choose and the function then returns the correct game to play
-//Get it
 playGame();
 
 
